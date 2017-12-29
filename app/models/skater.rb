@@ -1,6 +1,6 @@
 class Skater < ApplicationRecord
 
-  def fullname
+  def name
     self.first_name + ' ' + self.last_name
   end
 
