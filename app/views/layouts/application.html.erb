@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WallOfFameV2</title>
+    <title><%= club_short %> Wall Of Fame</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <div style="text-align: center;">
+        <h1><%= club_short %> Wall Of Fame</h1>
+        <h3><i>Development Site</i></h3>
+        <h5><i>This site is under active development.<br />
+          Expect errors, fake data, and broken sections</i></h5>
+      </div>
+      <%= yield %>
+    </div>
   </body>
 </html>
