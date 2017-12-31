@@ -28,10 +28,11 @@ class SkatersController < ApplicationController
 
     respond_to do |format|
       if @skater.save
-        success
+        format.html { redirect_to @skater, notice: 'Skater was successfully updated.' }
+        format.json { render :show, status: :ok, location: @skater }
       else
         format.html { render :new }
-
+        format.json { render json: @skater.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -41,10 +42,11 @@ class SkatersController < ApplicationController
   def update
     respond_to do |format|
       if @skater.update(skater_params)
-        success
+      format.html { redirect_to @skater, notice: 'Skater was successfully updated.' }
+      format.json { render :show, status: :ok, location: @skater }
       else
         format.html { render :edit }
-        unsuccess
+        format.json { render json: @skater.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -68,16 +70,5 @@ class SkatersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def skater_params
       params.require(:skater).permit(:first_name, :last_name)
-    end
-
-    #Successfully created/updated Skater
-    def success
-      format.html { redirect_to @skater, notice: 'Skater was successfully updated.' }
-      format.json { render :show, status: :ok, location: @skater }
-    end
-
-    #Error on creating/updating Skater
-    def unsuccess
-      format.json { render json: @skater.errors, status: :unprocessable_entity }
     end
 end
