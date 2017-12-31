@@ -31,7 +31,7 @@ class SkatersController < ApplicationController
         success
       else
         format.html { render :new }
-        format.json { render json: @skater.errors, status: :unprocessable_entity }
+
       end
     end
   end
@@ -44,7 +44,7 @@ class SkatersController < ApplicationController
         success
       else
         format.html { render :edit }
-        format.json { render json: @skater.errors, status: :unprocessable_entity }
+        unsuccess
       end
     end
   end
@@ -55,7 +55,7 @@ class SkatersController < ApplicationController
     @skater.destroy
     respond_to do |format|
       format.html { redirect_to skaters_url, notice: 'Skater was successfully destroyed.' }
-      format.json { head :no_content }
+      unsuccess
     end
   end
 
@@ -69,10 +69,15 @@ class SkatersController < ApplicationController
     def skater_params
       params.require(:skater).permit(:first_name, :last_name)
     end
-    
-    private
+
+    #Successfully created/updated Skater
     def success
       format.html { redirect_to @skater, notice: 'Skater was successfully updated.' }
       format.json { render :show, status: :ok, location: @skater }
+    end
+
+    #Error on creating/updating Skater
+    def unsuccess
+      format.json { render json: @skater.errors, status: :unprocessable_entity }
     end
 end
