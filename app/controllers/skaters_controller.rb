@@ -57,7 +57,7 @@ class SkatersController < ApplicationController
     @skater.destroy
     respond_to do |format|
       format.html { redirect_to skaters_url, notice: 'Skater was successfully destroyed.' }
-      unsuccess
+      
     end
   end
 

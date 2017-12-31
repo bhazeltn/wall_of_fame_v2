@@ -13,7 +13,7 @@
   <tbody>
     <% @skaters.each do |skater| %>
       <tr>
-        <td><%= skater.fullname %></td>
+        <td><%= skater.name %></td>
         <td><%= link_to 'Show', skater %></td>
         <td><%= link_to 'Edit', edit_skater_path(skater) %></td>
         <td><%= link_to 'Destroy', skater, method: :delete, data: { confirm: 'Are you sure?' } %></td>

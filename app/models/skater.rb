@@ -1,4 +1,5 @@
 class Skater < ApplicationRecord
+  include TextMethods
   def name
     self.first_name + ' ' + self.last_name
   end
